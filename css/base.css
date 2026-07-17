@@ -74,33 +74,19 @@ body {
 .side-nav {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
 }
 
 .side-nav a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 18px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
+  display: block;
+  padding: 8px 0;
   color: var(--text-muted);
   text-decoration: none;
-  background: transparent;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
-}
-
-.side-nav a svg {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  stroke: currentColor;
+  transition: color 0.2s;
 }
 
 .side-nav a:hover {
-  background: #161616;
   color: var(--text);
-  border-color: var(--border-hover);
 }
 
 .sidebar-contact {
@@ -171,12 +157,12 @@ section {
   padding-block: 48px;
 }
 
-/* Section kicker: mono index + label + trailing hairline (Roshan Sahu grid influence) */
+/* Section kicker: mono index + label (Roshan Sahu grid influence) */
 .section-kicker {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 28px;
+  margin-bottom: 14px;
 }
 
 .section-kicker .k-index {
@@ -193,12 +179,6 @@ section {
   font-size: 0.72rem;
   color: var(--text-dim);
   white-space: nowrap;
-}
-
-.section-kicker .k-rule {
-  flex: 1;
-  height: 1px;
-  background: var(--border);
 }
 
 .section-title {
