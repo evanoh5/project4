@@ -1,0 +1,98 @@
+/* Page title / subtitle (used atop .main sections, e.g. About) */
+.page-title {
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.page-subtitle .sep {
+  color: var(--text-dim);
+  margin: 0 8px;
+}
+
+/* About copy */
+.about-copy {
+  margin-top: 40px;
+}
+
+.about-copy p {
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 65ch;
+  margin: 0 0 1.2em;
+}
+
+.about-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.about-copy a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.about-copy a:hover {
+  color: #ffffff;
+}
+
+/* Experience entries */
+.xp-entry {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.xp-entry:last-child {
+  border-bottom: none;
+}
+
+.xp-role {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.xp-meta {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+.xp-subhead {
+  margin-top: 40px;
+  margin-bottom: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.xp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.xp-list li {
+  padding: 10px 0;
+  color: var(--text-muted);
+  position: relative;
+  padding-left: 20px;
+}
+
+.xp-list li::before {
+  content: "—";
+  color: var(--text-dim);
+  position: absolute;
+  left: 0;
+}
