@@ -1,100 +1,30 @@
-/* Page title (used atop .main sections, e.g. About) */
+/* Page title (About) — matches the Experience/Projects section titles: plain white */
 .page-title {
-  position: relative;
-  display: inline-block;
-  font-size: clamp(3rem, 7vw, 5rem);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1;
-  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 28px;
   color: var(--text);
-  transition: transform 0.35s ease, letter-spacing 0.35s ease;
-}
-
-/* Chromatic ghost layers (Ryan Ritzenthaler prismatic type) */
-.page-title::before,
-.page-title::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  opacity: 0;
-  mix-blend-mode: screen;
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.page-title::before {
-  color: #ff1e56; /* red channel */
-}
-
-.page-title::after {
-  color: #00e5ff; /* cyan channel */
 }
 
 /*
- * Hover: warp the letters and split them through a prism.
- * The main text becomes a rainbow gradient; the red/cyan ghost
- * layers fan out and a subtle liquid wobble runs underneath.
+ * Prism divider beneath each section kicker — mostly white with muted
+ * red / green / blue tints, echoing the cursor-tracking diamond.
  */
-#about:hover .page-title,
-.page-title:hover {
-  transform: skewX(-9deg) scale(1.04, 1.09);
-  letter-spacing: 0.06em;
+.prism-divider {
+  height: 1px;
+  border: 0;
+  margin: 0 0 30px;
   background: linear-gradient(
-    100deg,
-    #ff1e56 0%,
-    #ff8a00 22%,
-    #ffe600 40%,
-    #23d18b 58%,
-    #00e5ff 74%,
-    #7b5cff 90%,
-    #ff1e56 100%
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 80, 110, 0.32) 14%,
+    rgba(255, 255, 255, 0.55) 30%,
+    rgba(80, 220, 150, 0.32) 50%,
+    rgba(255, 255, 255, 0.55) 68%,
+    rgba(90, 130, 255, 0.32) 84%,
+    rgba(255, 255, 255, 0.05) 100%
   );
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: prism-warp 1.6s ease-in-out infinite,
-    prism-shift 3.2s linear infinite;
-}
-
-#about:hover .page-title::before,
-.page-title:hover::before {
-  opacity: 0.85;
-  transform: translate(-6px, 2px) skewX(4deg);
-}
-
-#about:hover .page-title::after,
-.page-title:hover::after {
-  opacity: 0.85;
-  transform: translate(6px, -2px) skewX(-4deg);
-}
-
-@keyframes prism-warp {
-  0%,
-  100% { transform: skewX(-9deg) scale(1.04, 1.09); }
-  50% { transform: skewX(-4deg) scale(1.06, 1.05); }
-}
-
-@keyframes prism-shift {
-  to { background-position: 220% 0; }
-}
-
-/* A gentle prismatic shimmer sweeps the intro copy on hover too */
-#about:hover .about-copy p {
-  text-shadow: -0.6px 0 rgba(255, 30, 86, 0.35), 0.6px 0 rgba(0, 229, 255, 0.35);
-  transition: text-shadow 0.4s ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #about:hover .page-title,
-  .page-title:hover {
-    animation: none;
-    transform: none;
-  }
 }
 
 /*
@@ -177,14 +107,10 @@
   color: #ffffff;
 }
 
-/* Experience entries */
+/* Experience & Education entries share one style */
 .xp-entry {
   padding: 20px 0;
   border-bottom: 1px solid var(--border);
-}
-
-.xp-entry:last-child {
-  border-bottom: none;
 }
 
 .xp-role {
