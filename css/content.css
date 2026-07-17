@@ -1,0 +1,157 @@
+/* About hero: title on the left, rotating badge on the right */
+.about-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* Page title / subtitle (used atop .main sections, e.g. About) */
+.page-title {
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+  /* Subtle chromatic aberration nod (Ryan Ritzenthaler prismatic type) */
+  text-shadow: -1px 0 rgba(255, 0, 90, 0.22), 1px 0 rgba(0, 200, 255, 0.22);
+}
+
+/* Rotating circular sparkle badge (Ryan Ritzenthaler influence) */
+.hero-badge {
+  position: relative;
+  width: 118px;
+  height: 118px;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.hero-badge .badge-ring {
+  width: 100%;
+  height: 100%;
+  animation: badge-spin 18s linear infinite;
+}
+
+.hero-badge .badge-ring text {
+  font-family: var(--font-mono);
+  font-size: 8.1px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  fill: var(--text-muted);
+}
+
+.hero-badge .badge-star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  color: var(--text);
+}
+
+@keyframes badge-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge .badge-ring {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-badge {
+    display: none;
+  }
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.page-subtitle .sep {
+  color: var(--text-dim);
+  margin: 0 8px;
+}
+
+/* About copy */
+.about-copy {
+  margin-top: 40px;
+}
+
+.about-copy p {
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 65ch;
+  margin: 0 0 1.2em;
+}
+
+.about-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.about-copy a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.about-copy a:hover {
+  color: #ffffff;
+}
+
+/* Experience entries */
+.xp-entry {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.xp-entry:last-child {
+  border-bottom: none;
+}
+
+.xp-role {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.xp-meta {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+.xp-subhead {
+  margin-top: 40px;
+  margin-bottom: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.xp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.xp-list li {
+  padding: 10px 0;
+  color: var(--text-muted);
+  position: relative;
+  padding-left: 20px;
+}
+
+.xp-list li::before {
+  content: "—";
+  color: var(--text-dim);
+  position: absolute;
+  left: 0;
+}
