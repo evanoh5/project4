@@ -1,10 +1,15 @@
 <aside class="sidebar">
   <img
     class="profile-photo"
-    src="assets/profile.jpg"
+    src="assets/IMG_1256.JPG"
     alt="Portrait photo"
     onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22260%22%20height%3D%22260%22%20viewBox%3D%220%200%20260%20260%22%3E%3Crect%20width%3D%22260%22%20height%3D%22260%22%20fill%3D%22%231a1a1a%22/%3E%3Ccircle%20cx%3D%22130%22%20cy%3D%22100%22%20r%3D%2245%22%20fill%3D%22%233a3a3a%22/%3E%3Cpath%20d%3D%22M50%20215c0-49%2036-88%2080-88s80%2039%2080%2088%22%20fill%3D%22%233a3a3a%22/%3E%3C/svg%3E'"
   />
+
+  <div class="profile-id">
+    <p class="mono profile-role">Deployment Strategy / Agent Systems</p>
+    <p class="profile-status"><span class="status-dot"></span>Open to good conversation</p>
+  </div>
 
   <nav class="side-nav">
     <a href="#about">
@@ -34,7 +39,25 @@
   </nav>
 
   <div class="sidebar-contact">
-    <p>Get in touch</p>
-    <a href="mailto:blockofcheeseday@gmail.com">blockofcheeseday@gmail.com</a>
+    <p class="contact-label">Get in touch</p>
+    <div class="contact-links">
+      <a href="mailto:blockofcheeseday@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+          <path d="m3 7 9 6 9-6"></path>
+        </svg>
+        blockofcheeseday@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/evanoh22/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 9.4h5.16V21H2.4zM9.9 9.4h4.95v1.58h.07c.69-1.24 2.38-2.55 4.9-2.55 5.24 0 6.2 3.28 6.2 7.54V21h-5.16v-4.9c0-1.17-.02-2.67-1.63-2.67-1.63 0-1.88 1.27-1.88 2.58V21H9.9z" transform="scale(0.83)"></path>
+        </svg>
+        linkedin.com/in/evanoh22
+      </a>
+    </div>
+    <div class="sidebar-clock">
+      <span>Local Time</span>
+      <span class="clock-time" id="clock">--:--:--</span>
+    </div>
   </div>
 </aside>
