@@ -1,0 +1,166 @@
+/* Projects section — floating animated project cards */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.project-card {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  aspect-ratio: 16 / 9;
+  min-height: 220px;
+  outline: none;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  animation: floaty 6s ease-in-out infinite;
+}
+
+.project-card:nth-child(2) {
+  animation-delay: -3s;
+}
+
+.project-card:hover,
+.project-card:focus-visible {
+  animation-play-state: paused;
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  border-color: var(--border-hover);
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--border-hover);
+  outline-offset: 3px;
+}
+
+.project-card:hover .card-desc,
+.project-card:focus-visible .card-desc {
+  opacity: 1;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    animation: none;
+  }
+}
+
+/* Card face — shared base */
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+
+/* Card 1 — Generator: Met */
+
+.card-met {
+  background: #f2f0eb;
+  color: #1a1a1a;
+}
+
+.met-headline {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0 0 10px;
+  line-height: 1.1;
+}
+
+.met-colon {
+  color: #c53030;
+}
+
+.met-tagline {
+  margin: 0 0 16px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: #555555;
+}
+
+.met-rule {
+  border: none;
+  border-top: 1px solid rgba(197, 48, 48, 0.5);
+  margin: 0;
+}
+
+.met-breadcrumb {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.met-crumb-muted {
+  color: #777777;
+  text-decoration: underline;
+}
+
+.met-crumb-sep {
+  color: #999999;
+}
+
+.met-crumb-dark {
+  color: #1a1a1a;
+}
+
+/* Card 2 — Break the Website */
+
+.card-break {
+  background: radial-gradient(circle at 12% 28%, rgba(230, 80, 70, 0.9), transparent 50%),
+    radial-gradient(circle at 78% 12%, rgba(178, 214, 188, 0.9), transparent 42%),
+    radial-gradient(circle at 92% 88%, rgba(228, 150, 70, 0.75), transparent 42%),
+    radial-gradient(circle at 70% 60%, rgba(235, 110, 130, 0.5), transparent 45%), #efece4;
+  justify-content: flex-end;
+}
+
+.break-headline {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  color: #2222dd;
+}
+
+/* Hover / focus description overlay */
+
+.card-desc {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: 28px;
+  background: rgba(10, 10, 10, 0.88);
+  color: #e5e5e5;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
