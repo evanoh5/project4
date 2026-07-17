@@ -1,70 +1,141 @@
-/* About hero: title on the left, rotating badge on the right */
-.about-hero {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 32px;
-}
-
-/* Page title / subtitle (used atop .main sections, e.g. About) */
+/* Page title (used atop .main sections, e.g. About) */
 .page-title {
+  position: relative;
+  display: inline-block;
   font-size: clamp(3rem, 7vw, 5rem);
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   line-height: 1;
   margin: 0;
-  /* Subtle chromatic aberration nod (Ryan Ritzenthaler prismatic type) */
-  text-shadow: -1px 0 rgba(255, 0, 90, 0.22), 1px 0 rgba(0, 200, 255, 0.22);
-}
-
-/* Rotating circular sparkle badge (Ryan Ritzenthaler influence) */
-.hero-badge {
-  position: relative;
-  width: 118px;
-  height: 118px;
-  flex-shrink: 0;
-  margin-top: 6px;
-}
-
-.hero-badge .badge-ring {
-  width: 100%;
-  height: 100%;
-  animation: badge-spin 18s linear infinite;
-}
-
-.hero-badge .badge-ring text {
-  font-family: var(--font-mono);
-  font-size: 8.1px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  fill: var(--text-muted);
-}
-
-.hero-badge .badge-star {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30px;
-  height: 30px;
   color: var(--text);
+  transition: transform 0.35s ease, letter-spacing 0.35s ease;
 }
 
-@keyframes badge-spin {
-  to { transform: rotate(360deg); }
+/* Chromatic ghost layers (Ryan Ritzenthaler prismatic type) */
+.page-title::before,
+.page-title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: screen;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.page-title::before {
+  color: #ff1e56; /* red channel */
+}
+
+.page-title::after {
+  color: #00e5ff; /* cyan channel */
+}
+
+/*
+ * Hover: warp the letters and split them through a prism.
+ * The main text becomes a rainbow gradient; the red/cyan ghost
+ * layers fan out and a subtle liquid wobble runs underneath.
+ */
+#about:hover .page-title,
+.page-title:hover {
+  transform: skewX(-9deg) scale(1.04, 1.09);
+  letter-spacing: 0.06em;
+  background: linear-gradient(
+    100deg,
+    #ff1e56 0%,
+    #ff8a00 22%,
+    #ffe600 40%,
+    #23d18b 58%,
+    #00e5ff 74%,
+    #7b5cff 90%,
+    #ff1e56 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: prism-warp 1.6s ease-in-out infinite,
+    prism-shift 3.2s linear infinite;
+}
+
+#about:hover .page-title::before,
+.page-title:hover::before {
+  opacity: 0.85;
+  transform: translate(-6px, 2px) skewX(4deg);
+}
+
+#about:hover .page-title::after,
+.page-title:hover::after {
+  opacity: 0.85;
+  transform: translate(6px, -2px) skewX(-4deg);
+}
+
+@keyframes prism-warp {
+  0%,
+  100% { transform: skewX(-9deg) scale(1.04, 1.09); }
+  50% { transform: skewX(-4deg) scale(1.06, 1.05); }
+}
+
+@keyframes prism-shift {
+  to { background-position: 220% 0; }
+}
+
+/* A gentle prismatic shimmer sweeps the intro copy on hover too */
+#about:hover .about-copy p {
+  text-shadow: -0.6px 0 rgba(255, 30, 86, 0.35), 0.6px 0 rgba(0, 229, 255, 0.35);
+  transition: text-shadow 0.4s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-badge .badge-ring {
+  #about:hover .page-title,
+  .page-title:hover {
     animation: none;
+    transform: none;
   }
 }
 
-@media (max-width: 640px) {
-  .hero-badge {
-    display: none;
-  }
+/*
+ * Prism diamond that trails the cursor (JS-positioned).
+ * Three stacked serifed diamonds — red / green / blue — blended
+ * with `screen` so they read white when aligned and fan into
+ * rainbow fringes as they separate with pointer velocity.
+ */
+.cursor-diamond {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.cursor-diamond.is-active {
+  opacity: 1;
+}
+
+.cursor-diamond svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: screen;
+  transition: transform 0.12s ease-out;
+}
+
+.cursor-diamond svg:nth-child(1) path { fill: #ff1e56; }
+.cursor-diamond svg:nth-child(2) path { fill: #23d18b; }
+.cursor-diamond svg:nth-child(3) path { fill: #4d7bff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-diamond svg { transition: none; }
 }
 
 .page-subtitle {
